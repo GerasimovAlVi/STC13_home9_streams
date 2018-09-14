@@ -9,6 +9,6 @@ public class Main {
         MyClassRead myClassRead = new MyClassRead();
         String[] strWord = {"bbbbbbbbbb", "cccccccccc"};
         String[] strPath = {"d://file1.txt","d://file2.txt","d://file3.txt","d://file4.txt","d://file5.txt"};
-        myClassRead.findAndWrite(strPath, strWord, "d://Itog.txt");
+        myClassRead.getOccurencies(strPath, strWord, "d://Itog.txt");
     }
 }
