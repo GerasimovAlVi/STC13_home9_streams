@@ -11,7 +11,6 @@ public class MyMainMethod {
         writeInFiles(path,n,size,words,probability);
     }
 
-
     static String getWord() {
         Random randomWord = new Random();
         int sizeWord = randomWord.nextInt(15) + 1;
