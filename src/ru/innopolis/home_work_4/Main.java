@@ -6,6 +6,5 @@ public class Main {
         String[] strWord = {"bbbbbbbbbb","spoyixflvvepa"};
         String[] strPath = {"d://file1.txt","d://file2.txt"};
         myClassRead.findAndWrite(strPath, strWord, "d://Itog.txt");
-        //myClassRead.findAndWrite("d://file1.txt", strWord, "d://Itog.txt");
     }
 }

@@ -9,23 +9,11 @@ import java.util.ArrayList;
 
 public class MyClassRead {
 
-    public static void main(String[] args) {
-        /*
-        System.out.println(read("d://file1.txt"));
-        System.out.println("");
-        System.out.println(find("d://file1.txt", str));
-        write("d://file1.txt", str, "d://Itog.txt");*/
-    }
-
     void findAndWrite(String[] strPath, String[] strWord, String pathWrite){
         for(String i:strPath){
             write(i, strWord, pathWrite);
         }
     }
-
-    /*void findAndWrite(String pathRead, String[] strWord, String pathWrite){
-        write(pathRead, strWord, pathWrite);
-    }*/
 
     static String read(String pathRead){
         String string = "";
@@ -67,10 +55,21 @@ public class MyClassRead {
     }
 
     static void write(String pathRead , String[] strWord, String pathWrite){
-
+        String string = "";
+        try(FileInputStream fileInputStream = new FileInputStream(pathWrite)){
+            int i;
+            while((i = fileInputStream.read()) != -1){
+                string += (char) i;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         try(FileOutputStream fileOutputStream = new FileOutputStream(pathWrite)){
-            byte[] buffer = find(pathRead, strWord).getBytes();
+            String strItog = string + find(pathRead, strWord);
+            byte[] buffer = strItog.getBytes();
             fileOutputStream.write(buffer, 0, buffer.length);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
