@@ -53,7 +53,14 @@ public class MyClassRead {
         String string2 = "";
         for(String i:arrayList){
             for(String j:arrayList2){
-                if(i.contains(j)){
+                if ((i.contains(" " + j + " ")) ||
+                        (i.contains(" " + j + ".")) ||
+                        (i.contains(" " + j + "!")) ||
+                        (i.contains(" " + j + "?")) ||
+                        (i.contains(j.substring(0, 1).toUpperCase() + j.substring(1) + " ")) ||
+                        (i.contains(j.substring(0, 1).toUpperCase() + j.substring(1) + ".")) ||
+                        (i.contains(j.substring(0, 1).toUpperCase() + j.substring(1) + "!")) ||
+                        (i.contains(j.substring(0, 1).toUpperCase() + j.substring(1) + "?"))) {
                     string2 += (i + " ");
                 }
             }
