@@ -6,7 +6,7 @@ public class Main {
         String[] words = new String[]{"aaaaaaaaaa", "bbbbbbbbbb", "cccccccccc"};
         myMainMethod.getFile("d://", 5, 50, words,1);*/
 
-        MyClassRead myClassRead = new MyClassRead();
-        myClassRead.read("d://file1.txt");
+        /*MyClassRead myClassRead = new MyClassRead();
+        myClassRead.findAndReplace("d://file1.txt", "bbbbbbbbbb", "ffffffffff");*/
     }
 }
