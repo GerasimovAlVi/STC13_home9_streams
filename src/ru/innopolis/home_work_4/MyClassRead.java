@@ -17,9 +17,15 @@ public class MyClassRead {
         write("d://file1.txt", str, "d://Itog.txt");*/
     }
 
-    void findAndWrite(String pathRead, String[] str, String pathWrite){
-        write(pathRead, str, pathWrite);
+    void findAndWrite(String[] strPath, String[] strWord, String pathWrite){
+        for(String i:strPath){
+            write(i, strWord, pathWrite);
+        }
     }
+
+    /*void findAndWrite(String pathRead, String[] strWord, String pathWrite){
+        write(pathRead, strWord, pathWrite);
+    }*/
 
     static String read(String pathRead){
         String string = "";
@@ -36,7 +42,7 @@ public class MyClassRead {
         return string;
     }
 
-    static String find(String pathRead, String[] str){
+    static String find(String pathRead, String[] strWord){
         String string = read(pathRead).replace("\r\n","")
                 .replace(".", ".___")
                 .replace("!", "!___")
@@ -46,7 +52,7 @@ public class MyClassRead {
             arrayList.add(i);
         }
         ArrayList<String> arrayList2 = new ArrayList<>();
-        for(String i:str){
+        for(String i:strWord){
             arrayList2.add(i);
         }
         String string2 = "";
@@ -60,9 +66,11 @@ public class MyClassRead {
         return string2;
     }
 
-    static void write(String pathRead , String[] str, String pathWrite){
+    static void write(String pathRead , String[] strWord, String pathWrite){
+
+
         try(FileOutputStream fileOutputStream = new FileOutputStream(pathWrite)){
-            byte[] buffer = find(pathRead, str).getBytes();
+            byte[] buffer = find(pathRead, strWord).getBytes();
             fileOutputStream.write(buffer, 0, buffer.length);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
