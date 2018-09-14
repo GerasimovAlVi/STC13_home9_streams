@@ -7,7 +7,7 @@ public class Main {
         myMainMethod.getFile("d://", 5, 50, words, 1);
 
         MyClassRead myClassRead = new MyClassRead();
-        String[] strWord = {"bbbbbbbbbb","spoyixflvvepa"};
+        String[] strWord = {"bbbbbbbbbb", "cccccccccc"};
         String[] strPath = {"d://file1.txt","d://file2.txt","d://file3.txt","d://file4.txt","d://file5.txt"};
         myClassRead.findAndWrite(strPath, strWord, "d://Itog.txt");
     }
