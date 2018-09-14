@@ -9,24 +9,21 @@ import java.util.ArrayList;
 
 public class MyClassRead {
 
-    static String[] str = {"aaaaaaaaaa","spoyixflvvepa"};
-    static String path1 = "d://Itog.txt";
-
     public static void main(String[] args) {
+        /*
         System.out.println(read("d://file1.txt"));
-        replace("d://file1.txt");
+        System.out.println("");
+        System.out.println(find("d://file1.txt", str));
+        write("d://file1.txt", str, "d://Itog.txt");*/
     }
 
-    /*void findAndReplace(String path, String word, String newWord){
-        System.out.println(read(path));
-        System.out.println("");
-        System.out.println(replace(path, word, newWord));
-        write(path, word, newWord);
-    }*/
+    void findAndWrite(String pathRead, String[] str, String pathWrite){
+        write(pathRead, str, pathWrite);
+    }
 
-    static String read(String path){
+    static String read(String pathRead){
         String string = "";
-        try(FileInputStream fileInputStream = new FileInputStream(path)){
+        try(FileInputStream fileInputStream = new FileInputStream(pathRead)){
             int i;
             while((i = fileInputStream.read()) != -1){
                 string += (char) i;
@@ -39,8 +36,8 @@ public class MyClassRead {
         return string;
     }
 
-    static void replace(String path){
-        String string = read(path).replace("\r\n","")
+    static String find(String pathRead, String[] str){
+        String string = read(pathRead).replace("\r\n","")
                 .replace(".", ".___")
                 .replace("!", "!___")
                 .replace("?", "?___");
@@ -48,35 +45,31 @@ public class MyClassRead {
         for(String i:string.split("___ ")){
             arrayList.add(i);
         }
-        String string2 = new String();
-
         ArrayList<String> arrayList2 = new ArrayList<>();
         for(String i:str){
             arrayList2.add(i);
         }
-
-        for(String j:arrayList){
-            System.out.println(j);
-            string2 += j + "__";
+        String string2 = "";
+        for(String i:arrayList){
+            for(String j:arrayList2){
+                if(i.contains(j)){
+                    string2 += (i + " ");
+                }
+            }
         }
-        //System.out.println(string2);
-
-        /*String string2 = string.replaceAll(word, newWord);
-        string2 = string2.replaceAll(word.substring(0, 1).toUpperCase() + word.substring(1),
-                newWord.substring(0, 1).toUpperCase() + newWord.substring(1));
-        return string2;*/
+        return string2;
     }
 
-    /*static void write(String path, String word, String newWord){
-        try(FileOutputStream fileOutputStream = new FileOutputStream(path)){
-            byte[] buffer = replace(path, word, newWord).getBytes();
+    static void write(String pathRead , String[] str, String pathWrite){
+        try(FileOutputStream fileOutputStream = new FileOutputStream(pathWrite)){
+            byte[] buffer = find(pathRead, str).getBytes();
             fileOutputStream.write(buffer, 0, buffer.length);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
 
 }
