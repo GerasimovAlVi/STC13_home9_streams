@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MyMainMethod {
-    static void getFile(String path, int n, int size, String[] words, int probability) {
+    void getFile(String path, int n, int size, String[] words, int probability) {
         writeInFiles(path,n,size,words,probability);
     }
 
