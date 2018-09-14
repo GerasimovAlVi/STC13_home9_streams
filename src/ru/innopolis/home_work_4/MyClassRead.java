@@ -10,6 +10,13 @@ import java.util.ArrayList;
 public class MyClassRead {
 
     void findAndWrite(String[] strPath, String[] strWord, String pathWrite){
+        try(FileOutputStream writer = new FileOutputStream(pathWrite)) {
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         for(String i:strPath){
             write(i, strWord, pathWrite);
         }
