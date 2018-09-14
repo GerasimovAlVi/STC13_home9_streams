@@ -7,12 +7,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MyMainMethod {
-    /////
-    public static void main(String[] args) {
-        String[] words = new String[]{"aaaaaaaaaa", "bbbbbbbbbb", "cccccccccc"};
-        getFile("d://", 5, 50, words,1);
-    }
-
     static void getFile(String path, int n, int size, String[] words, int probability) {
         writeInFiles(path,n,size,words,probability);
     }
