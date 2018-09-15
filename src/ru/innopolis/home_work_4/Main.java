@@ -2,9 +2,9 @@ package ru.innopolis.home_work_4;
 
 public class Main {
     public static void main(String[] args) {
-        MyMainMethod myMainMethod = new MyMainMethod();
+        /*MyMainMethod myMainMethod = new MyMainMethod();
         String[] words = new String[]{"aaaaaaaaaa", "bbbbbbbbbb", "cccccccccc"};
-        myMainMethod.getFile("d://", 5, 50, words, 1);
+        myMainMethod.getFile("d://", 5, 50, words, 1);*/
 
         MyClassRead myClassRead = new MyClassRead();
         String[] strWord = {"bbbbbbbbbb", "cccccccccc"};

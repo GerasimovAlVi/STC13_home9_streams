@@ -9,6 +9,19 @@ import java.util.ArrayList;
 
 public class MyClassRead {
 
+    public void getOccurencies(String[] strPath, String[] strWord, String pathWrite) {
+        try (FileOutputStream writer = new FileOutputStream(pathWrite)) {
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (String i : strPath) {
+            write(i, strWord, pathWrite);
+        }
+    }
+
     private static String read(String pathRead) {
         String string = "";
         try(FileInputStream fileInputStream = new FileInputStream(pathRead)){
@@ -78,19 +91,4 @@ public class MyClassRead {
             e.printStackTrace();
         }
     }
-
-    public void getOccurencies(String[] strPath, String[] strWord, String pathWrite) {
-        try (FileOutputStream writer = new FileOutputStream(pathWrite)) {
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        for (String i : strPath) {
-            write(i, strWord, pathWrite);
-        }
-    }
-
-
 }
