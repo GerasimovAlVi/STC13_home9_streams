@@ -9,20 +9,7 @@ import java.util.ArrayList;
 
 public class MyClassRead {
 
-    void getOccurencies(String[] strPath, String[] strWord, String pathWrite) {
-        try(FileOutputStream writer = new FileOutputStream(pathWrite)) {
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        for(String i:strPath){
-            write(i, strWord, pathWrite);
-        }
-    }
-
-    static String read(String pathRead){
+    private static String read(String pathRead) {
         String string = "";
         try(FileInputStream fileInputStream = new FileInputStream(pathRead)){
             int i;
@@ -37,7 +24,7 @@ public class MyClassRead {
         return string;
     }
 
-    static String find(String pathRead, String[] strWord){
+    private static String find(String pathRead, String[] strWord) {
         String string = read(pathRead).replace("\r\n","")
                 .replace(".", ".___")
                 .replace("!", "!___")
@@ -68,7 +55,7 @@ public class MyClassRead {
         return string2;
     }
 
-    static void write(String pathRead , String[] strWord, String pathWrite){
+    private static void write(String pathRead, String[] strWord, String pathWrite) {
         String string = "";
         try(FileInputStream fileInputStream = new FileInputStream(pathWrite)){
             int i;
@@ -89,6 +76,19 @@ public class MyClassRead {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void getOccurencies(String[] strPath, String[] strWord, String pathWrite) {
+        try (FileOutputStream writer = new FileOutputStream(pathWrite)) {
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (String i : strPath) {
+            write(i, strWord, pathWrite);
         }
     }
 
