@@ -9,22 +9,17 @@ public class SingleParserFile extends Thread {
 
     private String pathRead;
     private String[] strWord;
-    private String itogString;
+    private StringBuilder itogString;
 
-    public SingleParserFile(String pathRead, String[] strWord, String itogString) {
+    public SingleParserFile(String pathRead, String[] strWord, StringBuilder itogString) {
         this.pathRead = pathRead;
         this.strWord = strWord;
         this.itogString = itogString;
     }
 
-    public String getItogString() {
-        return itogString;
-    }
-
     @Override
     public void run() {
         find(pathRead, strWord);
-        System.out.println(getItogString());
     }
 
     private String read(String pathRead) {
@@ -71,7 +66,7 @@ public class SingleParserFile extends Thread {
             }
         }
         synchronized (itogString) {
-            itogString += string2;
+            itogString.append(string2);
         }
     }
 }
