@@ -46,13 +46,9 @@ public class SingleParserFile extends Thread {
         for (String i : string.split("___ ")) {
             arrayList.add(i);
         }
-        ArrayList<String> arrayList2 = new ArrayList<>();
-        for (String i : strWord) {
-            arrayList2.add(i);
-        }
         String string2 = "";
         for (String i : arrayList) {
-            for (String j : arrayList2) {
+            for (String j : strWord) {
                 if ((i.contains(" " + j + " ")) ||
                         (i.contains(" " + j + ".")) ||
                         (i.contains(" " + j + "!")) ||

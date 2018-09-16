@@ -22,7 +22,7 @@ public class ClassThreadPool {
         }
         executor.shutdown();
         try {
-            executor.awaitTermination(60L, TimeUnit.SECONDS);
+            executor.awaitTermination(60L, TimeUnit.MINUTES);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
