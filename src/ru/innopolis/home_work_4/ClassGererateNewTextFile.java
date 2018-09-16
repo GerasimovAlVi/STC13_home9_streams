@@ -6,6 +6,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 
 public class ClassGererateNewTextFile {
@@ -14,20 +17,16 @@ public class ClassGererateNewTextFile {
     private List<Thread> threads = new ArrayList<>();
 
     public void getOccurencies(String[] strPath, String[] strWord, String pathWrite, int pool) {
-        for (String i : strPath) {
-            /*Thread thread = new SingleParserFile(i, strWord, itogString);
-            thread.start();
-            threads.add(thread);*/
-            ClassThreadPool classThreadPool = new ClassThreadPool(pool, new SingleParserFile(i, strWord, itogString));
-            classThreadPool.createThreadPool();
-        }
-        /*for (Thread thread : threads) {
+        for (int i = 0; i < strPath.length; i++) {
+            ExecutorService executor = Executors.newFixedThreadPool(strPath.length);
+            executor.execute(new SingleParserFile(strPath[i], strWord, itogString));
+            executor.shutdown();
             try {
-                thread.join();
+                executor.awaitTermination(60L, TimeUnit.MINUTES);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }*/
+        }
         write(pathWrite);
     }
 
