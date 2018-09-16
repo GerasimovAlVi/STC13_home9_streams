@@ -25,7 +25,6 @@ public class SingleParserFile implements Callable<String> {
     }
 
     private String read(String strPath) {
-        //System.out.println("3+ " + System.currentTimeMillis());
         StringBuilder string = new StringBuilder();
         try (FileInputStream fileInputStream = new FileInputStream(strPath)) {
             int i;
@@ -37,17 +36,14 @@ public class SingleParserFile implements Callable<String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //System.out.println("4+ " + System.currentTimeMillis());
         return string.toString();
     }
 
     private void find(String strPath, String[] strWord) {
-        //System.out.println("2+ " + System.currentTimeMillis());
         String string = read(strPath).replace("\r\n", "")
                 .replace(".", ".___")
                 .replace("!", "!___")
                 .replace("?", "?___");
-        //System.out.println("5+ " + System.currentTimeMillis());
         ArrayList<String> arrayList = new ArrayList<>();
         for (String i : string.split("___ ")) {
             arrayList.add(i);
@@ -70,6 +66,5 @@ public class SingleParserFile implements Callable<String> {
         synchronized (itogString) {
             itogString.append(string2);
         }
-        //System.out.println("6+ " + System.currentTimeMillis());
     }
 }
