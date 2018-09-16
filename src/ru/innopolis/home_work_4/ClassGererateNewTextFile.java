@@ -8,16 +8,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MyClassRead {
+public class ClassGererateNewTextFile {
 
     private StringBuilder itogString = new StringBuilder();
     private List<Thread> threads = new ArrayList<>();
 
-    public void getOccurencies(String[] strPath, String[] strWord, String pathWrite) {
+    public void getOccurencies(String[] strPath, String[] strWord, String pathWrite, int pool) {
         for (String i : strPath) {
-            SingleParserFile thread = new SingleParserFile(i, strWord, itogString);
+            Thread thread = new SingleParserFile(i, strWord, itogString);
             thread.start();
             threads.add(thread);
+            /*ClassThreadPool classThreadPool = new ClassThreadPool(pool, new SingleParserFile(i, strWord, itogString));
+            classThreadPool.createThreadPool();*/
         }
         for (Thread thread : threads) {
             try {
