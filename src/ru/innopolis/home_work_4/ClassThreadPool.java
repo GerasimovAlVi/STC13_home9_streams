@@ -1,23 +1,30 @@
 package ru.innopolis.home_work_4;
 
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class ClassThreadPool {
 
     private int pool;
     private SingleParserFile singleParserFile;
 
-    public ClassThreadPool(int pools, SingleParserFile singleParserFile) {
+    public ClassThreadPool(int pool, SingleParserFile singleParserFile) {
         this.pool = pool;
         this.singleParserFile = singleParserFile;
     }
 
     public void createThreadPool() {
-        ExecutorService executorService = Executors.newFixedThreadPool(pool);
+        ExecutorService executor = Executors.newFixedThreadPool(pool);
         for (int i = 0; i < pool; i++) {
-            executorService.execute(singleParserFile);
+            executor.execute(singleParserFile);
         }
-        executorService.shutdown();
+        executor.shutdown();
+        try {
+            executor.awaitTermination(60L, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

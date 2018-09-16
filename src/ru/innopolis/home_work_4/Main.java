@@ -9,6 +9,6 @@ public class Main {
         ClassGererateNewTextFile classGererateNewTextFile = new ClassGererateNewTextFile();
         String[] strWord = {"bbbbbbbbbb", "cccccccccc"};
         String[] strPath = {"d://file1.txt","d://file2.txt","d://file3.txt","d://file4.txt","d://file5.txt"};
-        classGererateNewTextFile.getOccurencies(strPath, strWord, "d://Itog.txt", 1);
+        classGererateNewTextFile.getOccurencies(strPath, strWord, "d://Itog.txt", 2);
     }
 }

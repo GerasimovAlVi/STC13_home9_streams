@@ -15,19 +15,19 @@ public class ClassGererateNewTextFile {
 
     public void getOccurencies(String[] strPath, String[] strWord, String pathWrite, int pool) {
         for (String i : strPath) {
-            Thread thread = new SingleParserFile(i, strWord, itogString);
+            /*Thread thread = new SingleParserFile(i, strWord, itogString);
             thread.start();
-            threads.add(thread);
-            /*ClassThreadPool classThreadPool = new ClassThreadPool(pool, new SingleParserFile(i, strWord, itogString));
-            classThreadPool.createThreadPool();*/
+            threads.add(thread);*/
+            ClassThreadPool classThreadPool = new ClassThreadPool(pool, new SingleParserFile(i, strWord, itogString));
+            classThreadPool.createThreadPool();
         }
-        for (Thread thread : threads) {
+        /*for (Thread thread : threads) {
             try {
                 thread.join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
         write(pathWrite);
     }
 
