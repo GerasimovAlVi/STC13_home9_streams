@@ -4,8 +4,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.Callable;
 
-public class SingleParserFile extends Thread {
+public class SingleParserFile implements Callable<String> {
 
     private String strPath;
     private String[] strWord;
@@ -18,8 +19,9 @@ public class SingleParserFile extends Thread {
     }
 
     @Override
-    public void run() {
+    public String call() {
         find(strPath, strWord);
+        return itogString.toString();
     }
 
     private String read(String strPath) {

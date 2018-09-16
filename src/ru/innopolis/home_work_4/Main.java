@@ -1,7 +1,7 @@
 package ru.innopolis.home_work_4;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         /*Long startTime1 = System.currentTimeMillis();
         ClassGenerateText classGenerateText = new ClassGenerateText();
         String[] words = new String[]{"aaaaaaaaaa", "bbbbbbbbbb", "cccccccccc"};
@@ -17,7 +17,7 @@ public class Main {
         //String[] strWord = {"bbbbbbbbbb", "cccccccccc"};
         String[] strPath = {"d://file1.txt", "d://file2.txt", "d://file3.txt", "d://file4.txt", "d://file5.txt"};
         //String[] strPath = {"d://file1.txt","d://file2.txt"};
-        classGererateNewTextFile.getOccurencies(strPath, strWord, "d://Itog.txt", 5);
+        classGererateNewTextFile.getOccurencies(strPath, strWord, "d://Itog.txt");
         System.out.println("Время анализа файлов и записи в один файл: " + (System.currentTimeMillis() - startTime2));
     }
 }

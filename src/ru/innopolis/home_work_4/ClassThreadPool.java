@@ -7,15 +7,15 @@ import java.util.concurrent.TimeUnit;
 
 public class ClassThreadPool {
 
-    private int pool;
+    private String[] strPath;
     private SingleParserFile singleParserFile;
 
-    public ClassThreadPool(int pool, SingleParserFile singleParserFile) {
-        this.pool = pool;
+    public ClassThreadPool(String[] strPath, SingleParserFile singleParserFile) {
+        this.strPath = strPath;
         this.singleParserFile = singleParserFile;
     }
 
-    public void createThreadPool() {
+    public void createThreadPools() {
         ExecutorService executor = Executors.newFixedThreadPool(pool);
         for (int i = 0; i < pool; i++) {
             executor.execute(singleParserFile);
@@ -26,5 +26,5 @@ public class ClassThreadPool {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }

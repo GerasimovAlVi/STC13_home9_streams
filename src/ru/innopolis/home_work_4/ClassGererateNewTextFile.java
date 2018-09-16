@@ -6,9 +6,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 
 public class ClassGererateNewTextFile {
@@ -16,17 +16,21 @@ public class ClassGererateNewTextFile {
     private StringBuilder itogString = new StringBuilder();
     private List<Thread> threads = new ArrayList<>();
 
-    public void getOccurencies(String[] strPath, String[] strWord, String pathWrite, int pool) {
-        for (int i = 0; i < strPath.length; i++) {
-            ExecutorService executor = Executors.newFixedThreadPool(strPath.length);
-            executor.execute(new SingleParserFile(strPath[i], strWord, itogString));
-            executor.shutdown();
-            try {
-                executor.awaitTermination(60L, TimeUnit.MINUTES);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+    public void getOccurencies(String[] strPath, String[] strWord, String pathWrite) throws InterruptedException {
+        ClassThreadPool classThreadPool = new ClassThreadPool(strPath, new SingleParserFile(path, strWord, itogString));
+        classThreadPool.createThreadPools();
+        ExecutorService executor;
+        if ((strPath.length) > 10) {
+            executor = Executors.newFixedThreadPool(10);
+        } else {
+            executor = Executors.newFixedThreadPool(strPath.length);
         }
+        List<Callable<String>> tasks = new ArrayList<>();
+        for (String path : strPath) {
+            tasks.add(new SingleParserFile(path, strWord, itogString));
+        }
+        executor.invokeAll(tasks);
+        executor.shutdown();
         write(pathWrite);
     }
 
