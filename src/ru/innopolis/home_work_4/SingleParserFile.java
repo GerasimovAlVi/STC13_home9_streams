@@ -7,24 +7,24 @@ import java.util.ArrayList;
 
 public class SingleParserFile extends Thread {
 
-    private String pathRead;
+    private String strPath;
     private String[] strWord;
     private StringBuilder itogString;
 
-    public SingleParserFile(String pathRead, String[] strWord, StringBuilder itogString) {
-        this.pathRead = pathRead;
+    public SingleParserFile(String strPath, String[] strWord, StringBuilder itogString) {
+        this.strPath = strPath;
         this.strWord = strWord;
         this.itogString = itogString;
     }
 
     @Override
     public void run() {
-        find(pathRead, strWord);
+        find(strPath, strWord);
     }
 
-    private String read(String pathRead) {
+    private String read(String strPath) {
         String string = "";
-        try (FileInputStream fileInputStream = new FileInputStream(pathRead)) {
+        try (FileInputStream fileInputStream = new FileInputStream(strPath)) {
             int i;
             while ((i = fileInputStream.read()) != -1) {
                 string += (char) i;
@@ -37,8 +37,8 @@ public class SingleParserFile extends Thread {
         return string;
     }
 
-    private void find(String pathRead, String[] strWord) {
-        String string = read(pathRead).replace("\r\n", "")
+    private void find(String strPath, String[] strWord) {
+        String string = read(strPath).replace("\r\n", "")
                 .replace(".", ".___")
                 .replace("!", "!___")
                 .replace("?", "?___");
