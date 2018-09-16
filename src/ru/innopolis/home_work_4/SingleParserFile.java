@@ -1,7 +1,8 @@
 package ru.innopolis.home_work_4;
 
-import java.io.FileInputStream;
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
@@ -25,17 +26,19 @@ public class SingleParserFile implements Callable<String> {
     }
 
     private String read(String strPath) {
+        System.out.println("2:" + System.currentTimeMillis());
         StringBuilder string = new StringBuilder();
-        try (FileInputStream fileInputStream = new FileInputStream(strPath)) {
-            int i;
-            while ((i = fileInputStream.read()) != -1) {
-                string.append((char) i);
+        String sstring = null;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(strPath))) {
+            while ((sstring = bufferedReader.readLine()) != null) {
+                string.append(sstring);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("3:" + System.currentTimeMillis());
         return string.toString();
     }
 
@@ -44,6 +47,7 @@ public class SingleParserFile implements Callable<String> {
                 .replace(".", ".___")
                 .replace("!", "!___")
                 .replace("?", "?___");
+        System.out.println("4:" + System.currentTimeMillis());
         ArrayList<String> arrayList = new ArrayList<>();
         for (String i : string.split("___ ")) {
             arrayList.add(i);
@@ -66,5 +70,6 @@ public class SingleParserFile implements Callable<String> {
         synchronized (itogString) {
             itogString.append(string2);
         }
+        System.out.println("5:" + System.currentTimeMillis());
     }
 }

@@ -8,6 +8,7 @@ public class Main {
         classGenerateText.getFile("d://", 1, 145000, words, 1);
         System.out.println("Время записи файлов: " + (System.currentTimeMillis() - startTime1));*/
 
+        System.out.println("1:" + System.currentTimeMillis());
         Long startTime2 = System.currentTimeMillis();
         ClassGererateNewTextFile classGererateNewTextFile = new ClassGererateNewTextFile();
         String[] strPath = {"d://file1.txt"};
