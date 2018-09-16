@@ -4,22 +4,16 @@ import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 
 public class ClassGererateNewTextFile {
 
     private StringBuilder itogString = new StringBuilder();
-    private List<Thread> threads = new ArrayList<>();
 
     public void getOccurencies(String[] strPath, String[] strWord, String pathWrite) throws InterruptedException {
-        ClassThreadPool classThreadPool = new ClassThreadPool(strPath, new SingleParserFile(path, strWord, itogString));
-        classThreadPool.createThreadPools();
-        ExecutorService executor;
+        ClassThreadPool classThreadPool = new ClassThreadPool();
+        classThreadPool.createThreadPools(strPath, strWord, itogString);
+        /*ExecutorService executor;
         if ((strPath.length) > 10) {
             executor = Executors.newFixedThreadPool(10);
         } else {
@@ -30,7 +24,7 @@ public class ClassGererateNewTextFile {
             tasks.add(new SingleParserFile(path, strWord, itogString));
         }
         executor.invokeAll(tasks);
-        executor.shutdown();
+        executor.shutdown();*/
         write(pathWrite);
     }
 
