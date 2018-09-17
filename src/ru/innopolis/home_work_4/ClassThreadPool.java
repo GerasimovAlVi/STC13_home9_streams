@@ -9,13 +9,8 @@ import java.util.concurrent.Executors;
 
 public class ClassThreadPool {
 
-    public void createThreadPools(String[] strPath, String[] strWord, StringBuilder itogString) throws InterruptedException {
-        ExecutorService executor;
-        if ((strPath.length) > 10) {
-            executor = Executors.newFixedThreadPool(10);
-        } else {
-            executor = Executors.newFixedThreadPool(strPath.length);
-        }
+    public void createThreadPools(String[] strPath, String[] strWord, StringBuilder itogString, int pool) throws InterruptedException {
+        ExecutorService executor = Executors.newFixedThreadPool(pool);
         List<Callable<String>> tasks = new ArrayList<>();
         for (String path : strPath) {
             tasks.add(new SingleParserFile(path, strWord, itogString));

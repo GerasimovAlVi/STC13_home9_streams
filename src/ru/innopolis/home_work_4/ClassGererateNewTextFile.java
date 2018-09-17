@@ -9,9 +9,9 @@ public class ClassGererateNewTextFile {
 
     private StringBuilder itogString = new StringBuilder();
 
-    public void getOccurencies(String[] strPath, String[] strWord, String pathWrite) throws InterruptedException {
+    public void getOccurencies(String[] strPath, String[] strWord, String pathWrite, int pool) throws InterruptedException {
         ClassThreadPool classThreadPool = new ClassThreadPool();
-        classThreadPool.createThreadPools(strPath, strWord, itogString);
+        classThreadPool.createThreadPools(strPath, strWord, itogString, pool);
         System.out.println("6:" + System.currentTimeMillis());
         write(pathWrite);
         System.out.println("7:" + System.currentTimeMillis());

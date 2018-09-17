@@ -15,7 +15,7 @@ public class Main {
         //String[] strWord = {"bbbbbbbbbb", "cccccccccc"};
         String[] strWord = {"bbbbbbbbbb"};
         //String[] strPath = {"d://file1.txt", "d://file2.txt", "d://file3.txt", "d://file4.txt", "d://file5.txt"};
-        classGererateNewTextFile.getOccurencies(strPath, strWord, "d://Itog.txt");
+        classGererateNewTextFile.getOccurencies(strPath, strWord, "d://Itog.txt", 5);
         System.out.println("Время анализа файлов и записи в один файл: " + (System.currentTimeMillis() - startTime2));
     }
 }
