@@ -4,12 +4,6 @@ import java.net.URI;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        /*Long startTime1 = System.currentTimeMillis();
-        ClassGenerateText classGenerateText = new ClassGenerateText();
-        String[] words = new String[]{"aaaaaaaaaa", "bbbbbbbbbb", "cccccccccc"};
-        classGenerateText.getFile("d://", 5, 50000, words, 1);
-        System.out.println("Время записи файлов: " + (System.currentTimeMillis() - startTime1));*/
-
         Long startTime2 = System.currentTimeMillis();
         ClassGererateNewTextFile classGererateNewTextFile = new ClassGererateNewTextFile();
         String[] strWord = {"bbbbbbbbbb"};
