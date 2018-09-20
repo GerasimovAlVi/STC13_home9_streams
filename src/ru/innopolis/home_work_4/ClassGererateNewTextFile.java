@@ -13,9 +13,7 @@ public class ClassGererateNewTextFile {
     public void getOccurencies(URI[] uri, String[] strWord, String pathWrite, int pool) throws InterruptedException {
         ClassThreadPool classThreadPool = new ClassThreadPool();
         classThreadPool.createThreadPools(uri, strWord, itogString, pool);
-        System.out.println("6:" + System.currentTimeMillis());
         write(pathWrite);
-        System.out.println("7:" + System.currentTimeMillis());
     }
 
     private void write(String pathWrite) {

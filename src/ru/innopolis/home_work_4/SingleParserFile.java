@@ -23,58 +23,18 @@ public class SingleParserFile implements Callable<String> {
 
     @Override
     public String call() {
-        find(strPath, strWord);
+        read_find(strPath, strWord);
         return itogString.toString();
     }
 
-    /*private String read(String strPath) {
-        System.out.println("2:" + System.currentTimeMillis());
-        StringBuilder text = new StringBuilder();
-        String string = null;
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(strPath))) {
-            while ((string = bufferedReader.readLine()) != null) {
-                text.append(string);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println("3:" + System.currentTimeMillis());
-        return text.toString();
-    }*/
-
-    private void find(String strPath, String[] strWord) {
-        /*String string = read(strPath).replace("\r\n", "")
-                .replace(".", ".___")
-                .replace("!", "!___")
-                .replace("?", "?___");*/
-
-        /*String string = null;
-        try {
-            string = Files.lines(Paths.get(strPath)).map(s->s.replaceAll("\r\n", ""))
-                    .map(s->s.replaceAll("\\.",".___"))
-                    .map(s->s.replaceAll("!","!___"))
-                    .map(s->s.replaceAll("\\?","?___"))
-                    .collect(Collectors.joining(""));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
-        System.out.println("4:" + System.currentTimeMillis());
-
-        /*List<String> arrayList = new ArrayList<>();
-        for (String i : string.split("___ ")) {
-            arrayList.add(i);
-        }*/
-
+    private void read_find(String strPath, String[] strWord) {
         List<String> arrayList = new ArrayList<>();
         try {
             arrayList = Files.lines(Paths.get(strPath)).map(s -> s.replaceAll("\r\n", ""))
                     .map(s -> s.replaceAll("\\.", ".___"))
                     .map(s -> s.replaceAll("!", "!___"))
                     .map(s -> s.replaceAll("\\?", "?___"))
-                    .flatMap((p) -> Arrays.asList(p.split("___ ")).stream()).collect(Collectors.toList());
+                    .flatMap(p -> Arrays.asList(p.split("___ ")).stream()).collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -97,6 +57,5 @@ public class SingleParserFile implements Callable<String> {
         synchronized (itogString) {
             itogString.append(string2);
         }
-        System.out.println("5:" + System.currentTimeMillis());
     }
 }

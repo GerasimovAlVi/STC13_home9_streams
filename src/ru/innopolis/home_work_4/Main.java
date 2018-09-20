@@ -10,7 +10,6 @@ public class Main {
         classGenerateText.getFile("d://", 5, 50000, words, 1);
         System.out.println("Время записи файлов: " + (System.currentTimeMillis() - startTime1));*/
 
-        System.out.println("1:" + System.currentTimeMillis());
         Long startTime2 = System.currentTimeMillis();
         ClassGererateNewTextFile classGererateNewTextFile = new ClassGererateNewTextFile();
         String[] strWord = {"bbbbbbbbbb"};
