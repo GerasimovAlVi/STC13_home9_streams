@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Callable;
 
 public class SingleParserFile implements Callable<String> {
@@ -48,7 +49,7 @@ public class SingleParserFile implements Callable<String> {
                 .replace("!", "!___")
                 .replace("?", "?___");
         System.out.println("4:" + System.currentTimeMillis());
-        ArrayList<String> arrayList = new ArrayList<>();
+        List<String> arrayList = new ArrayList<>();
         for (String i : string.split("___ ")) {
             arrayList.add(i);
         }

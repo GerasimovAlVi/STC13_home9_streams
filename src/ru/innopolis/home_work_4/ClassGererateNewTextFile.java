@@ -4,14 +4,15 @@ import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
 
 public class ClassGererateNewTextFile {
 
     private StringBuilder itogString = new StringBuilder();
 
-    public void getOccurencies(String[] strPath, String[] strWord, String pathWrite, int pool) throws InterruptedException {
+    public void getOccurencies(URI[] uri, String[] strWord, String pathWrite, int pool) throws InterruptedException {
         ClassThreadPool classThreadPool = new ClassThreadPool();
-        classThreadPool.createThreadPools(strPath, strWord, itogString, pool);
+        classThreadPool.createThreadPools(uri, strWord, itogString, pool);
         System.out.println("6:" + System.currentTimeMillis());
         write(pathWrite);
         System.out.println("7:" + System.currentTimeMillis());

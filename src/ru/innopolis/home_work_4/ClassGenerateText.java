@@ -4,14 +4,16 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class ClassGenerateText {
-    void getFile(String path, int n, int size, String[] words, int probability) {
+
+    public void getFile(String path, int n, int size, String[] words, int probability) {
         writeInFiles(path,n,size,words,probability);
     }
 
-    static String getWord() {
+    private String getWord() {
         Random randomWord = new Random();
         int sizeWord = randomWord.nextInt(15) + 1;
         StringBuilder stringBuilderWord = new StringBuilder(sizeWord);
@@ -22,7 +24,7 @@ public class ClassGenerateText {
         return stringBuilderWord.toString();
     }
 
-    static String getSentence() {
+    private String getSentence() {
         Random randomSentence = new Random();
         int sizeSentence = randomSentence.nextInt(15) + 1;
         StringBuilder stringBuilderSentence = new StringBuilder(sizeSentence);
@@ -45,7 +47,7 @@ public class ClassGenerateText {
         return stringBuilderSentence.toString();
     }
 
-    static String getText(String path, int n, int size, String[] words, int probability) {
+    private String getText(String path, int n, int size, String[] words, int probability) {
         StringBuilder stringBuilderText = new StringBuilder();
         int size2 = size;
         while (size2 != 0) {
@@ -70,21 +72,21 @@ public class ClassGenerateText {
         return stringBuilderText.toString();
     }
 
-    static char addEnd() {
+    private char addEnd() {
         Random random = new Random();
         char[] arrChar = new char[]{33, 46, 63};
         return arrChar[random.nextInt(3)];
     }
 
-    static int randomReplaceWord(String path, int n, int size, String[] words, int probability){
+    private int randomReplaceWord(String path, int n, int size, String[] words, int probability) {
         Random random = new Random();
         return random.nextInt(probability);
     }
 
-    static String replaceWord(String path, int n, int size, String[] words, int probability){
+    private String replaceWord(String path, int n, int size, String[] words, int probability) {
         String string1 = new String(getSentence());
         String string2 = new String();
-        ArrayList<String> arrayList = new ArrayList<>();
+        List<String> arrayList = new ArrayList<>();
 
         for (String i:string1.split(" ")) {
             arrayList.add(i);
@@ -108,7 +110,7 @@ public class ClassGenerateText {
         return string2;
     }
 
-    static String comma(){
+    private String comma() {
         int random = new Random().nextInt(10);
         String comma = "";
         if(random == 0){
@@ -117,7 +119,7 @@ public class ClassGenerateText {
         return comma;
     }
 
-    static void writeInFiles(String path, int n, int size, String[] words, int probability){
+    private void writeInFiles(String path, int n, int size, String[] words, int probability) {
         for(int i = 1; i <= n; i++) {
             try (FileOutputStream fileOutputStream = new FileOutputStream(path + "file" + i + ".txt")) {
                 byte[] buffer = getText(path,n,size,words,probability).getBytes();
