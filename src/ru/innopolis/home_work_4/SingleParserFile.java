@@ -38,8 +38,7 @@ public class SingleParserFile implements Callable<String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        StringBuilder string2 = new StringBuilder();
+        StringBuilder text = new StringBuilder();
         for (String i : arrayList) {
             for (String j : strWord) {
                 if ((i.contains(" " + j + " ")) ||
@@ -50,12 +49,12 @@ public class SingleParserFile implements Callable<String> {
                         (i.contains(j.substring(0, 1).toUpperCase() + j.substring(1) + ".")) ||
                         (i.contains(j.substring(0, 1).toUpperCase() + j.substring(1) + "!")) ||
                         (i.contains(j.substring(0, 1).toUpperCase() + j.substring(1) + "?"))) {
-                    string2.append(i + " ");
+                    text.append(i + " ");
                 }
             }
         }
         synchronized (itogString) {
-            itogString.append(string2);
+            itogString.append(text);
         }
     }
 }
