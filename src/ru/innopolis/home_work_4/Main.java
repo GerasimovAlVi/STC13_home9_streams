@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Long startTime2 = System.currentTimeMillis();
         ClassGererateNewTextFile classGererateNewTextFile = new ClassGererateNewTextFile();
-        String[] strWord = {"bbbbbbbbbb, cccccccccc"};
+        String[] strWord = {"bbbbbbbbbb"};
         URI[] uri = {URI.create("d://file1.txt"),
                 URI.create("d://file2.txt"),
                 URI.create("d://file3.txt"),
