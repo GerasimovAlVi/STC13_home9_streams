@@ -23,11 +23,11 @@ public class SingleParserFile implements Callable<String> {
 
     @Override
     public String call() {
-        read_find(strPath, strWord);
+        readAndFind(strPath, strWord);
         return itogString.toString();
     }
 
-    private void read_find(String strPath, String[] strWord) {
+    private void readAndFind(String strPath, String[] strWord) {
         List<String> arrayList = new ArrayList<>();
         try {
             arrayList = Files.lines(Paths.get(strPath)).map(s -> s.replaceAll("\r\n", ""))
